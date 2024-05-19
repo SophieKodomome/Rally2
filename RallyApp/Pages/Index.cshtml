@@ -1,10 +1,44 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Rally";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<main>
+    <header>
+        <h1>Rally Point</h1>
+        <sub>insert cool oneliner here</sub>
+    </header>
+    <body>
+        <article>
+            <h2>First, let's see the bigger picture</h2>
+            <form action="">
+                <section>
+                    <label for="">Number of rally</label>
+                    <input type="number" name="" id="" placeholder="in number">
+                    <sub>Set the number of rally here</sub>
+                </section>
+                <section>
+                    <label for="">Specials</label>
+                    <section>
+                        <span>
+                            <input type="radio" name="" id="" required>Specials 1
+                        </span>
+                        <span>
+                            <input type="radio" name="" id="" required>Specials 1
+                        </span>
+                    </section>
+                    <sub>check at least 1 specials</sub>
+                </section>
+                <section>
+                    <label for="">Number of racers</label>
+                    <input type="range" name="" id="" required>
+                    <sub>the number of racer cannot exceed what is already in the database</sub>
+                </section>
+                <section>
+                    <input type="submit" value="next">
+                </section>
+            </form>
+        </article>
+    </body>
+</main>
