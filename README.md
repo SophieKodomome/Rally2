@@ -16,19 +16,19 @@
 <h1>To do list &#x1F4CB;</h1>
   <h2> &#x1F4C4; Page Form</h2>
     <h3>Front Office</h3>
-      <h4>First form</h4>
-        <li>input number of rally</li>
-        <li>input checkbox special</li>
-        <li>input number of racer</li>
-        <li>submit button next</li>
+      <h4>(ok)First form</h4>
+        <li>(ok)input number of rally</li>
+        <li>(ok)input checkbox special</li>
+        <li>(ok)input number of racer</li>
+        <li>(ok)submit button next</li>
       <h4>Second form</h4>
-        <li>section with list of rally</li>
+        <li>(ok)section with list of rally</li>
         <ul>
-          <li>section racers(i)</li>
+          <li>(ok)section racers(i)</li>
             <ul>
-              <li>input time for every special</li>
-              <li>input time(min:sec:millisecond)</li>
-              <li>button next racers(i+1)</li>
+              <li>(ok)input time for every special</li>
+              <li>(ok)input time(min:sec:millisecond)</li>
+              <li>(ok)button next racers(i+1)</li>
             </ul>
         </ul>
     <h3>Back Office</h3>
@@ -51,7 +51,9 @@
                   <ul>
                     <li>int id</li>
                     <li>string name</li>
-                    <li>Timestamp time</li>
+                    <li>int minute</li>
+                    <li>int sec</li>
+                    <li>int millisec</li>
                     <li>function getListSpecial()</li>
                   </ul>
                 </ul>
@@ -79,7 +81,9 @@
     <ul>
       <li>idRacer(reference id.racer)</li>
       <li>idSpecial(reference id.special)</li>
-      <li>Time</li>
+      <li>minute</li>
+      <li>second</li>
+      <li>millisecond</li>
     </ul>
     <li>view v_racer</li>
     <ul>
@@ -95,7 +99,9 @@
       <li>idGroup (idGroup.v_racer)</li>
       <li>nameGroup (nameGroup.v_racer)</li>
       <li>idSpecial(idSpecial.Time)</li>
-      <li>Time(Time.Time)</li>
+      <li>minute(minute.Time)</li>
+      <li>second(second.Time)</li>
+      <li>millisecond(millisecond.Time)</li>
     </ul>
         
             
