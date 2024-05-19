@@ -82,17 +82,21 @@
       <li>Time</li>
     </ul>
     <li>view v_racer</li>
+    <ul>
       <li>id(id.racer)</li>
       <li>name(id.racer)</li>
       <li>idGroup(id.group)</li>
       <li>nameGroup(name.group)</li>
+    </ul>
     <li>view v_time</li>
+    <ul>
       <li>idRacer(id.v_racer)</li>
       <li>name(name.v_racer)</li>
       <li>idGroup (idGroup.v_racer)</li>
       <li>nameGroup (nameGroup.v_racer)</li>
       <li>idSpecial(idSpecial.Time)</li>
       <li>Time(Time.Time)</li>
+    </ul>
         
             
         
