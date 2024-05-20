@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "n/B8K+kEzZNTs50yWAd9fjjMXoA4pxOJQtlxs27CmXs3ZBhokNJQBgTrIPweMTDpmI9xpY02bmdf+Kic6JAhMQ==",
+  "dgSpecHash": "TOWtjEPVLADCZRz5pA/r49jvXRYGCs9E02XO9GeiNtkQyB92wJhe1xg8TvNCYO3K3zXj0Wy/AvRzC3zeXf3bZQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Pyvas\\OneDrive\\Documents\\C-ITU-Files-L2\\S4\\ITU-S4-02-Code\\.NET\\New folder\\Rally2\\RallyApp\\RallyApp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Pyvas\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Pyvas\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Pyvas\\.nuget\\packages\\npgsql\\8.0.3\\npgsql.8.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
