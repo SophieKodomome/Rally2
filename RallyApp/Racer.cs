@@ -41,10 +41,10 @@ namespace race
 
         public static List<Racer> GetListRacers(NpgsqlConnection connection)
         {
-            List<Racer> listRacer= new List<Racer>();
+            List<Racer> racers= new List<Racer>();
 
             connection.Open();
-            string selectCommand = "SELECT * FROM v_racer;";
+            string selectCommand = "SELECT * FROM v_racers;";
             using(var command=new NpgsqlCommand(selectCommand,connection))
             {
                 using(var reader=command.ExecuteReader())
@@ -56,11 +56,12 @@ namespace race
                             .AddName(reader.GetString(1))
                             .AddIdCategory(reader.GetInt32(2))
                             .AddCategory(reader.GetString(1));
-                        listRacer.Add(racer);
+                        racers.Add(racer);
                     }
                 }
             }
-            return listRacer;
+            connection.Close();
+            return racers;
         }
     }
 }

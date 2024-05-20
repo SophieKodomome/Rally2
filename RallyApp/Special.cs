@@ -1,3 +1,5 @@
+using Npgsql;
+
 namespace race
 {
     public class Special
@@ -96,6 +98,29 @@ namespace race
             return this;
         }
 
-        public static List<Special> GetSpecials
+        public static List<Special> GetSpecials(NpgsqlConnection connection)
+        {
+            List<Special> specials= new List<Special>();
+            connection.Open();
+
+            string selectCommand = "SELECT id_special,name_special FROM v_time;";
+
+            using(var command=new NpgsqlCommand(selectCommand,connection))
+            {
+                using(var reader=command.ExecuteReader())
+                {
+                    while(reader.Read())
+                    {
+                        Special special=
+                         new Special()
+                         .AddId(reader.GetInt32(0))
+                         .AddName(reader.GetString(1));
+                        specials.Add(special);
+                    }
+                }
+            }
+            connection.Close();
+            return specials;
+        }
     }
 }

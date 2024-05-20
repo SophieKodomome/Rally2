@@ -26,11 +26,7 @@ CREATE TABLE Time(
     second INT NOT NULL,
     millisecond INT NOT NULL,
     FOREIGN KEY (id_racers) REFERENCES Racers(id),
-    FOREIGN KEY (id_special) REFERENCES Special(id),
-    CONSTRAINT point_not_negative CHECK (point<0),
-    CONSTRAINT minute_not_negative CHECK (minute<0),
-    CONSTRAINT second_not_negative CHECK (second<0),
-    CONSTRAINT millisecond_not_negative CHECK (millisecond<0)
+    FOREIGN KEY (id_special) REFERENCES Special(id)
 );
 
 CREATE OR REPLACE VIEW v_racers AS
@@ -46,15 +42,84 @@ JOIN
 ON 
     Racers.id_category = Category.id;
 
-CREATE OR REPLACE VIEW v_time as
-    SELECT
-        id_racers.v_racers,
-        name_racers.v_racers,
-        id_category.v_racers,
-        name_category.v_racers,
-        id_special.Time,
-        minute.Time,
-        second.Time,
-        millisecond.Time
-    FROM v_racers JOIN Time
-    ON v_racers.id_racers=Time.id_racers;
+CREATE OR REPLACE VIEW v_time AS
+SELECT
+    v_racers.id_racers AS id_racer,
+    v_racers.name_racers AS name_racers,
+    v_racers.id_category AS id_categorie,
+    v_racers.name_category AS name_category,
+    Time.point AS point,
+    Time.id_special AS id_special,
+    Special.name AS name_special,
+    Time.minute AS minute,
+    Time.second AS second,
+    Time.millisecond AS millisecond
+FROM 
+    v_racers 
+JOIN 
+    Time
+ON 
+    v_racers.id_racers = Time.id_racers
+JOIN
+    Special
+ON Time.id_special = Special.id;
+
+INSERT INTO Special(name) VALUES('Special 1');
+INSERT INTO Special(name) VALUES('Special 2');
+INSERT INTO Special(name) VALUES('Special 3');
+INSERT INTO Special(name) VALUES('Special 4');
+INSERT INTO Special(name) VALUES('Special 5');
+INSERT INTO Special(name) VALUES('Special 6');
+
+INSERT INTO Category(name) VALUES('B');
+INSERT INTO Category(name) VALUES('C');
+INSERT INTO Category(name) VALUES('D');
+
+INSERT INTO Racers(name,id_category) VALUES('Concurrent 1',1);
+INSERT INTO Racers(name,id_category) VALUES('Concurrent 2',2);
+INSERT INTO Racers(name,id_category) VALUES('Concurrent 3',2);
+INSERT INTO Racers(name,id_category) VALUES('Concurrent 4',3);
+INSERT INTO Racers(name,id_category) VALUES('Concurrent 5',3);
+INSERT INTO Racers(name,id_category) VALUES('Concurrent 6',3);
+
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (1,1,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (1,2,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (1,3,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (1,4,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (1,5,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (1,6,0,0,0,0);
+
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (2,1,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (2,2,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (2,3,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (2,4,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (2,5,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (2,6,0,0,0,0);
+
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (3,1,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (3,2,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (3,3,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (3,4,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (3,5,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (3,6,0,0,0,0);
+
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (4,1,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (4,2,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (4,3,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (4,4,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (4,5,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (4,6,0,0,0,0);
+
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (5,1,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (5,2,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (5,3,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (5,4,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (5,5,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (5,6,0,0,0,0);
+
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (6,1,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (6,2,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (6,3,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (6,4,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (6,5,0,0,0,0);
+INSERT INTO Time(id_racers,id_special,point,minute,second,millisecond) VALUES (6,6,0,0,0,0);
