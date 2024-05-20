@@ -96,5 +96,6 @@ namespace race
             return this;
         }
 
+        public static List<Special> GetSpecials
     }
 }

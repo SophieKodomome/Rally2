@@ -1,4 +1,6 @@
 
+using Npgsql;
+
 namespace race
 {
     public class Racer
@@ -36,5 +38,29 @@ namespace race
             return this;
         }
         public Racer(){}
+
+        public static List<Racer> GetListRacers(NpgsqlConnection connection)
+        {
+            List<Racer> listRacer= new List<Racer>();
+
+            connection.Open();
+            string selectCommand = "SELECT * FROM v_racer;";
+            using(var command=new NpgsqlCommand(selectCommand,connection))
+            {
+                using(var reader=command.ExecuteReader())
+                {
+                    while(reader.Read()){
+                        Racer racer=
+                            new Racer()
+                            .AddId(reader.GetInt32(0))
+                            .AddName(reader.GetString(1))
+                            .AddIdCategory(reader.GetInt32(2))
+                            .AddCategory(reader.GetString(1));
+                        listRacer.Add(racer);
+                    }
+                }
+            }
+            return listRacer;
+        }
     }
 }

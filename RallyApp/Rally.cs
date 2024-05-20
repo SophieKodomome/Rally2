@@ -1,3 +1,5 @@
+using Npgsql;
+
 namespace race
 {
     public class Rally
@@ -15,6 +17,11 @@ namespace race
         {
             ListRacer=lr;
             return this;
+        }
+        public Rally(){}
+        public static Rally PSQLFetchAll(NpgsqlConnection connection)
+        {
+            return Rally;
         }
     }    
 }
