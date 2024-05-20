@@ -1,5 +1,3 @@
-using Npgsql;
-
 namespace race
 {
     public class Special
@@ -7,7 +5,6 @@ namespace race
         public int Id{get;set;}
         public string Name{get;set;}
         private int minute;
-
         public int Minute
         {
             get
@@ -31,7 +28,6 @@ namespace race
             }
         }
         private int second;
-
         public int Second
         {
             get{
