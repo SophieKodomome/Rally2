@@ -33,11 +33,11 @@ public class IndexModel : PageModel
             int i=0;
             foreach (var item in MainRally.ListRacer)
             {
-                Racers[i]=JsonConvert.SerializeObject(item.Name);
+                Racers[i]=item.Name;
                 int j=0;
                 foreach(var item2 in item.ListSpecial)
                 {
-                    Specials[j]=JsonConvert.SerializeObject(item2.Name);
+                    Specials[j]=item2.Name;
                     j++;
                 }
                 i++;

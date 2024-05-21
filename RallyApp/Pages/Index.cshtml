@@ -9,7 +9,7 @@
     <script>
         var app = angular.module("ng-rally", []);
         app.controller("getSpecials", function($scope) {
-            $scope.specials = @Html.Raw(ViewData["Specials"].ToString());
+            $scope.specials = @Html.Raw(ViewData["Specials"]);
             //$scope.racers = @Html.Raw(Model.Racers);
         });
     </script>
