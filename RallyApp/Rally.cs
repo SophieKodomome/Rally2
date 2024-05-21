@@ -23,9 +23,9 @@ namespace race
         {
             Rally rally= new Rally();
             rally.AddListRacer(Racer.GetListRacers(connection));
-            foreach (var Racer in rally.ListRacer)
+            foreach (var racer in rally.ListRacer)
             {
-                Racer.AddListSpecial(Special.GetSpecials(connection));
+                racer.AddListSpecial(Special.GetSpecialsFromRacerId(connection,racer.Id));
             }
             return rally;
         }

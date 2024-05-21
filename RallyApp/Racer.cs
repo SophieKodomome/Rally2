@@ -55,7 +55,7 @@ namespace race
                             .AddId(reader.GetInt32(0))
                             .AddName(reader.GetString(1))
                             .AddIdCategory(reader.GetInt32(2))
-                            .AddCategory(reader.GetString(1));
+                            .AddCategory(reader.GetString(3));
                         racers.Add(racer);
                     }
                 }

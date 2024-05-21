@@ -28,23 +28,8 @@ public class IndexModel : PageModel
         using (var connection = new NpgsqlConnection(connect.ConnectionString))
         {
             MainRally=Rally.PSQLFetchAll(connection);
-            Racers=new string[MainRally.ListRacer.Count];
-            Specials=new string[MainRally.ListRacer[0].ListSpecial.Count];
-            int i=0;
-            foreach (var item in MainRally.ListRacer)
-            {
-                Racers[i]=item.Name;
-                int j=0;
-                foreach(var item2 in item.ListSpecial)
-                {
-                    Specials[j]=item2.Name;
-                    j++;
-                }
-                i++;
-            }
-
+            string rallyJson = JsonConvert.SerializeObject(MainRally);
+            ViewData["RallyJson"]=rallyJson;
         }
-            ViewData["Specials"] = JsonConvert.SerializeObject(Specials);
-            ViewData["Racers"] = JsonConvert.SerializeObject(Racers);
     }
 }

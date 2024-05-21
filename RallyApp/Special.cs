@@ -98,12 +98,12 @@ namespace race
             return this;
         }
 
-        public static List<Special> GetSpecials(NpgsqlConnection connection)
+        public static List<Special> GetSpecialsFromRacerId(NpgsqlConnection connection, int IdRacer)
         {
             List<Special> specials= new List<Special>();
             connection.Open();
 
-            string selectCommand = "SELECT id_special,name_special FROM v_time;";
+            string selectCommand = "SELECT id_special,name_special FROM v_time WHERE id_racer="+IdRacer +";";
 
             using(var command=new NpgsqlCommand(selectCommand,connection))
             {
