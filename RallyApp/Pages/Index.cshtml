@@ -9,30 +9,71 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script>
         var app = angular.module("ng-rally", []);
-        app.controller("getSpecials", function ($scope) {
-            $scope.mainRally = JSON.parse('@Html.Raw(ViewData["RallyJson"])');
+        app.service("rallyService",function(){
+            this.mainRally = JSON.parse('@Html.Raw(ViewData["RallyJson"])');
+            this.useState = []
+            this.useState[0] = true;
 
+            this.getMainRally = function(){
+                return this.mainRally;
+            }
+
+            this.updateMainRally= function(updateRally){
+                this.mainRally = updateRally;
+            }
+
+            this.toggleState = function(index){
+                this.useState[index] = !this.useState[index];
+            }
+
+            this.getUseState = function(index){
+                return this.useState[index];
+            }
+        });
+
+        app.controller("form_1", function ($scope, rallyService) {
+            $scope.mainRally = rallyService.getMainRally();
             $scope.updateRally = function () {
-                $scope.mainRally.Number = angular.copy($scope.mainRally.Number);
+                this.mainRally.Number = angular.copy(this.mainRally.Number);
 
-                /*$scope. = */
-
-                /*let emptyArray=[];
-
-                $scope.mainRally.ListRacer=emptyArray;*/
-
-                $scope.mainRally.ListRacer = $scope.mainRally.ListRacer.filter(function (racer, index) {
+                this.mainRally.ListRacer = this.mainRally.ListRacer.filter(function (racer, index) {
                     return racer.checked;
                 });
 
-                $scope.mainRally.ListRacer.forEach(function (racer) {
+                this.mainRally.ListRacer.forEach(function (racer) {
                     racer.ListSpecial = racer.ListSpecial.filter(function (special) {
                         return special.checked;
                     });
                 });
+
+                rallyService.updateMainRally($scope.mainRally);
+            }
+            $scope.printRally= function(){
+                console.log("form_1");
                 console.log($scope.mainRally.ListRacer[0].ListSpecial);
                 console.log($scope.mainRally.ListRacer);
                 console.log($scope.mainRally.Number);
+            }
+
+            $scope.toggleShow= function(){
+                rallyService.toggleState(0);
+            }
+
+            $scope.isForm1Visible = function(){
+                return rallyService.getUseState(0);
+            }
+        });
+
+        app.controller("form_2", function($scope,rallyService){
+
+            $scope.mainRally = rallyService.getMainRally();
+                console.log("form 2");
+                console.log($scope.mainRally.ListRacer[0].ListSpecial);
+                console.log($scope.mainRally.ListRacer);
+                console.log($scope.mainRally.Number);
+
+            $scope.isForm1Visible = function(){
+                return rallyService.getUseState(0);
             }
         });
     </script>
@@ -43,13 +84,13 @@
         <h1 class="text-gray-100 font-extrabold text-5xl text-uppercase">Rally Point</h1>
         <sub class="text-gray-100 text-2xl font-extralight">insert cool oneliner here</sub>
     </header>
-    <main class="flex flex-row gap-8 justify-left" ng-controller="getSpecials">
-        <article class="bg-gray-100 py-4 px-10 rounded-xl w-1/3 border-4 border-blue-600 flex-row">
+    <main class="flex flex-row gap-8 justify-left">
+        <article ng-hide="!isForm1Visible()" class="bg-gray-100 py-4 px-10 rounded-xl w-1/3 border-4 border-blue-600 flex-row" ng-controller="form_1">
             <header class="flex flex-row justify-between">
                 <h2 class="text-blue-500 text-3xl font-bold mb-4">First, let's see the bigger picture</h2>
                 <p class="bg-blue-600 mb-16 mt-1 rounded-full px-2 pb-1 text-blue-600">1</p>
             </header>
-            <form ng-submit="updateRally()">
+            <form ng-submit="updateRally();printRally();toggleShow()">
                 <section class="flex flex-col gap-4 mb-2">
                     <section class="flex flex-col gap-2 mb-2">
                         <label class="text-gray-900 font-medium text-2xl" for="rallyNumber">Number of rally</label>
@@ -88,7 +129,7 @@
                 </section>
             </form>
         </article>
-        <article ng-show="check" class="bg-gray-100 py-4 px-10 rounded-xl w-1/3 border-4 border-blue-600 flex-row">
+        <article ng-show="!isForm1Visible()" class="bg-gray-100 py-4 px-10 rounded-xl w-1/3 border-4 border-blue-600 flex-row" ng-controller="form_2">
             <header class="flex flex-row justify-between">
                 <h2 class="text-blue-500 text-3xl font-bold mb-4">Now, let's go into details</h2>
                 <p class="bg-blue-600 mb-16 mt-1 rounded-full px-2 pb-1 text-blue-600">1</p>

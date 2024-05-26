@@ -31,77 +31,77 @@
               <li>(ok)button next racers(i+1)</li>
             </ul>
         </ul>
-    <h3>Back Office</h3>
-      <h4>Classes</h4>
-        <li>Rally</li>
+    <h3>(ok)Back Office</h3>
+      <h4>(ok)Classes</h4>
+        <li>(ok)Rally</li>
         <ul>
-          <li>int Number</li>
-          <li>function insertInfo()</li>
-          <li>Arraylist Racer racers</li>
+          <li>(ok)int Number</li>
+          <li>(ok)function insertInfo()</li>
+          <li>(ok)Arraylist Racer racers</li>
           <ul>
-            <li>racers</li>
+            <li>(ok)racers</li>
               <ul>
-                <li>int id</li>
-                <li>string name</li>
-                <li>string group</li>
-                <li>function getListRacers()</li>
-                <li>Arraylist Special specials</li>
+                <li>(ok)int id</li>
+                <li>(ok)string name</li>
+                <li>(ok)string group</li>
+                <li>(ok)function getListRacers()</li>
+                <li>(ok)Arraylist Special specials</li>
                 <ul>
-                  <li>Special</li>
+                  <li>(ok)Special</li>
                   <ul>
-                    <li>int id</li>
-                    <li>string name</li>
-                    <li>int minute</li>
-                    <li>int sec</li>
-                    <li>int millisec</li>
-                    <li>function getListSpecial()</li>
+                    <li>(ok)int id</li>
+                    <li>(ok)string name</li>
+                    <li>(ok)int minute</li>
+                    <li>(ok)int sec</li>
+                    <li>(ok)int millisec</li>
+                    <li>(ok)function getListSpecial()</li>
                   </ul>
                 </ul>
               </ul>
           </ul>    
         </ul>
-  <h3>Database</h3>
-    <li>Table Special</li>
+  <h3>(ok)Database</h3>
+    <li>(ok)Table Special</li>
     <ul>
-      <li>id</li>
-      <li>name</li>
+      <li>(ok)id</li>
+      <li>(ok)name</li>
     </ul>
-    <li>Group</li>
+    <li>(ok)Group</li>
     <ul>
-      <li>id</li>
-      <li>name</li>
+      <li>(ok)id</li>
+      <li>(ok)name</li>
     </ul>
-    <li>Table Racer</li>
+    <li>(ok)Table Racer</li>
     <ul>
-      <li>id</li>
-      <li>name</li>
-      <li>idgroup(reference id.group)</li>
+      <li>(ok)id</li>
+      <li>(ok)name</li>
+      <li>(ok)idgroup(reference id.group)</li>
     </ul>
-    <li>Time</li>
+    <li>(ok)Time</li>
     <ul>
-      <li>idRacer(reference id.racer)</li>
-      <li>idSpecial(reference id.special)</li>
-      <li>minute</li>
-      <li>second</li>
-      <li>millisecond</li>
+      <li>(ok)idRacer(reference id.racer)</li>
+      <li>(ok)idSpecial(reference id.special)</li>
+      <li>(ok)minute</li>
+      <li>(ok)second</li>
+      <li>(ok)millisecond</li>
     </ul>
-    <li>view v_racer</li>
+    <li>(ok)view v_racer</li>
     <ul>
-      <li>id(id.racer)</li>
-      <li>name(id.racer)</li>
-      <li>idGroup(id.group)</li>
-      <li>nameGroup(name.group)</li>
+      <li>(ok)id(id.racer)</li>
+      <li>(ok)name(id.racer)</li>
+      <li>(ok)idGroup(id.group)</li>
+      <li>(ok)nameGroup(name.group)</li>
     </ul>
-    <li>view v_time</li>
+    <li>(ok)view v_time</li>
     <ul>
-      <li>idRacer(id.v_racer)</li>
-      <li>name(name.v_racer)</li>
-      <li>idGroup (idGroup.v_racer)</li>
-      <li>nameGroup (nameGroup.v_racer)</li>
-      <li>idSpecial(idSpecial.Time)</li>
-      <li>minute(minute.Time)</li>
-      <li>second(second.Time)</li>
-      <li>millisecond(millisecond.Time)</li>
+      <li>(ok)idRacer(id.v_racer)</li>
+      <li>(ok)name(name.v_racer)</li>
+      <li>(ok)idGroup (idGroup.v_racer)</li>
+      <li>(ok)nameGroup (nameGroup.v_racer)</li>
+      <li>(ok)idSpecial(idSpecial.Time)</li>
+      <li>(ok)minute(minute.Time)</li>
+      <li>(ok)second(second.Time)</li>
+      <li>(ok)millisecond(millisecond.Time)</li>
     </ul>
         
             
