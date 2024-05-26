@@ -29,6 +29,7 @@ public class IndexModel : PageModel
         {
             MainRally=Rally.PSQLFetchAll(connection);
             string rallyJson = JsonConvert.SerializeObject(MainRally);
+            
             ViewData["RallyJson"]=rallyJson;
         }
     }
