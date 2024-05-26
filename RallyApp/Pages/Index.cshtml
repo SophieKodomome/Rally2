@@ -13,7 +13,15 @@
             $scope.mainRally = JSON.parse('@Html.Raw(ViewData["RallyJson"])');
 
             $scope.updateRally = function() {
-                $scope.number = angular.copy($scope.mainRally.Number)
+                $scope.number = angular.copy($scope.mainRally.Number);
+                $scope.checkedSpecials = $scope.mainRally.ListRacer[0].ListSpecial.filter(function(special, index) {
+                    return special.checked;
+                });
+                $scope.checkedRacers = $scope.mainRally.ListRacer.filter(function(racer,index){
+                    return racer.checked;
+                });
+                console.log($scope.checkedRacers);
+                console.log($scope.checkedSpecials);
                 console.log($scope.number);
             }
         });
@@ -31,7 +39,7 @@
                 <h2 class="text-blue-500 text-3xl font-bold mb-4">First, let's see the bigger picture</h2>
                 <p class="bg-blue-600 mb-16 mt-1 rounded-full px-2 pb-1 text-blue-600">1</p>
             </header>
-            <form>
+            <form ng-submit="updateRally()">
                 <section class="flex flex-col gap-4 mb-2">
                     <section class="flex flex-col gap-2 mb-2">
                         <label class="text-gray-900 font-medium text-2xl" for="rallyNumber">Number of rally</label>
@@ -45,7 +53,7 @@
                         <section class="flex flex-wrap gap-2">
                             <span class="flex flex-row gap-2 bg-blue-600 p-3 rounded-md hover:bg-blue-700"
                                 ng-repeat="special in mainRally.ListRacer[0].ListSpecial">
-                                <input type="checkbox" name="" id="">
+                                <input type="checkbox" ng-model="special.checked">
                                 <label class="text-gray-100" for="">{{ special.Name }}</label>
                             </span>
                         </section>
@@ -55,9 +63,9 @@
                         <label class="text-gray-900 font-medium text-2xl" for="">Racers</label>
                         <section class="flex flex-wrap gap-2">
                             <span class="flex flex-row gap-2 bg-blue-600 p-3 rounded-md hover:bg-blue-700"
-                                ng-repeat="racers in mainRally.ListRacer">
-                                <input type="checkbox" name="" id="">
-                                <label class="text-gray-100" for="">{{ racers.Name }}</label>
+                                ng-repeat="racer in mainRally.ListRacer">
+                                <input type="checkbox" ng-model="racer.checked">
+                                <label class="text-gray-100" for="">{{ racer.Name }}</label>
                             </span>
                         </section>
                         <sub class="text-md text-blue-600">Check at least 5 racers</sub>
@@ -66,7 +74,7 @@
                 <section class="mt-6 mb-4 text-center">
                     <input
                         class="py-3 w-full text-white text-uppercase text-3xl font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-purple-500 hover:via-pink-500 hover:to-red-500 rounded-lg shadow-lg"
-                        type="submit" value="Next" ng-click="updateRally()">
+                        type="submit" value="Next">
                 </section>
             </form>
         </article>
