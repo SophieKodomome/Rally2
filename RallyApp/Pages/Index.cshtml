@@ -74,8 +74,8 @@
             $scope.isForm1Visible = function () {
                 $scope.range = getRange();
                 for (let i = 0; i < $scope.mainRally.Number; i++) {
-                    console.log("form 2");
                     $scope.listRally[i] = $scope.mainRally;
+                    console.log($scope.listRally[i].ListRacer);
                 }
                 return rallyService.getUseState(0);
             };
